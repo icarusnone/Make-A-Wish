@@ -1,0 +1,139 @@
+/* font: import ================================================ */
+@font-face {
+  font-family: 'variableFont';
+  src: url('./font/RobotoFlex.ttf') format('truetype');
+}
+
+
+/* Layout ================================================ */
+html,body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  position: relative; /* Needed for the pseudo-element */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: #8fff81;
+  transition: background-color 1s ease-in-out, background-image 1s ease-in-out;
+  background-image: url('./img/human.png');
+  background-repeat: no-repeat;
+  background-position: left 18px top 18px;
+  background-size: 29%;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #353535;
+  opacity: var(--bg-opacity, 0);
+  transition: opacity 1s ease-in-out;
+  z-index: -2;
+}
+
+.end-bg {
+  background-color: #353535;
+}
+
+#monkey-overlay {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  width: 29%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: -1;
+}
+
+
+/* text ================================================ */
+#mainText {
+  font-family: 'variableFont';
+  font-size: 200px;
+  transition: font-variation-settings 1s ease-in-out, color 1s ease-in-out;
+}
+
+.variable1 {
+  font-feature-settings: "calt" 1, "liga" 1, "rlig" 1, "rvrn" 1, "kern" 1, "rclt" 1;
+  font-variation-settings: "THCK" 0, "grow" 0;
+  color: red;
+}
+
+.variable2 {
+  font-feature-settings: "calt" 1, "liga" 1, "rlig" 1, "rvrn" 1, "kern" 1, "rclt" 1;  
+  font-variation-settings: "THCK" 1000, "grow" 1000;
+  color: blue;
+}
+
+
+/* Image ================================================ */
+#image {
+  width: 200px;
+}
+
+#rectangle {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: calc(71% - 54px);
+  height: 96%;
+  background-color: #eaeaea;
+  border: 1px solid #353535;
+  border-radius: 4px;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+#startBtn {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  color: #353535;
+  width: 70px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 10;
+  background-color: #8fff81;
+  border: 1px solid #353535;
+}
+
+#wish-text, .story-text {
+  font-size: 40px;
+  color: #333;
+  text-align: left;
+  font-family: 'variableFont';
+  font-variation-settings: "opsz" 120, "wght" 314, "wdth" 100, "slnt" -8.0;
+  margin-bottom: 18px;
+  position: relative; /* For reveal animation */
+  overflow: hidden; /* For reveal animation */
+}
+
+.reveal-text {
+  opacity: 0;
+  display: inline-block;
+}
+
+.reveal-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #353535; /* Using a color from your palette */
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+
